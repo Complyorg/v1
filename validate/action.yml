@@ -1,0 +1,27 @@
+name: "Comply.org Attestation Validator"
+description: "Validates attestation.json files against the Comply.org Attestation Standard v1.0 schema."
+
+inputs:
+  attestation-glob:
+    description: "Glob pattern to find attestation.json files to validate."
+    required: false
+    default: "**/attestation.json"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22
+
+    - name: Install validator dependencies
+      shell: bash
+      run: npm ci --prefix ${{ github.action_path }}
+
+    - name: Run validation
+      shell: bash
+      env:
+        ATTESTATION_GLOB: ${{ inputs.attestation-glob }}
+        SCHEMA_DIR: ${{ github.action_path }}/../schema
+      run: node ${{ github.action_path }}/validate.mjs
