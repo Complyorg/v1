@@ -1,0 +1,100 @@
+{
+  "$complyVersion": "1.0",
+  "slug": "acme-privacy-corp",
+  "name": "Acme Privacy Corp",
+  "category": "Privacy & Consent",
+  "subcategory": "Consent Management",
+  "description": "Enterprise-grade consent management and privacy compliance tools used by over 5,000 organizations worldwide.",
+  "website": "https://acmeprivacy.example.com",
+  "privacyPolicyUrl": "https://acmeprivacy.example.com/privacy",
+  "trustCenterUrl": "https://acmeprivacy.example.com/trust",
+  "dpaUrl": "https://acmeprivacy.example.com/dpa",
+  "securityPageUrl": "https://acmeprivacy.example.com/security",
+  "certifications": ["ISO 27001", "SOC 2 Type II", "ISO 27701"],
+  "frameworks": ["GDPR", "CCPA", "HIPAA"],
+  "gdprCompliant": true,
+  "ccpaCompliant": true,
+  "hipaaCompliant": false,
+  "dataLocations": ["EU", "US"],
+  "hasEuDataCenter": true,
+  "subprocessors": [
+    { "name": "AWS", "purpose": "Cloud hosting", "location": "EU" },
+    { "name": "Datadog", "purpose": "Monitoring", "location": "US" },
+    { "name": "Stripe", "purpose": "Billing", "location": "US" }
+  ],
+  "transferSafeguards": "SCCs",
+  "supportsDsars": true,
+  "hasDesignatedDpo": true,
+  "hasRecentBreach": false,
+  "encryptionAtRest": true,
+  "encryptionInTransit": true,
+  "penTestFrequency": "Annually",
+  "breachNotificationDays": 72,
+  "dataRetentionPolicy": "36 months",
+  "privacyTechnologies": [
+    "Tokenization",
+    "Pseudonymization",
+    "Synthetic Data",
+    "Differential Privacy",
+    "Homomorphic Encryption",
+    "Secure Multi-Party Computation",
+    "Trusted Execution Environments",
+    "Federated Learning"
+  ],
+  "euAiActCompliant": null,
+  "aiCapabilities": [],
+  "aiTechniques": [],
+  "euAiActRole": null,
+  "iso42001Certified": false,
+  "transparencyScore": 82,
+  "dpaAnalysis": {
+    "overallScore": 75,
+    "gdpr": {
+      "score": 8,
+      "total": 10,
+      "clauses": [
+        { "key": "purpose_limitation", "label": "Purpose Limitation", "found": true },
+        { "key": "data_minimization", "label": "Data Minimization", "found": true },
+        { "key": "storage_limitation", "label": "Storage Limitation", "found": true },
+        { "key": "security_measures", "label": "Security Measures", "found": true },
+        { "key": "subprocessor_list", "label": "Subprocessor List", "found": true },
+        { "key": "breach_notification", "label": "Breach Notification", "found": true },
+        { "key": "data_transfer", "label": "Data Transfer", "found": true },
+        { "key": "dsar_assistance", "label": "DSAR Assistance", "found": true },
+        { "key": "audit_rights", "label": "Audit Rights", "found": false },
+        { "key": "deletion_return", "label": "Deletion/Return", "found": false }
+      ]
+    },
+    "ccpa": {
+      "score": 4,
+      "total": 5,
+      "clauses": [
+        { "key": "sale_restriction", "label": "Sale Restriction", "found": true },
+        { "key": "service_provider_obligations", "label": "Service Provider Obligations", "found": true },
+        { "key": "consumer_rights", "label": "Consumer Rights Assistance", "found": true },
+        { "key": "data_disclosure", "label": "Data Disclosure", "found": true },
+        { "key": "retention_limits", "label": "Retention Limits", "found": false }
+      ]
+    },
+    "usState": { "score": 0, "total": 0, "clauses": [] }
+  },
+  "expertReviews": [
+    {
+      "expertRefCode": "EXP-2026-001",
+      "issuingPlatform": "vendor.watch",
+      "issuingPlatformUrl": "https://vendor.watch/verify/EXP-2026-001",
+      "expertType": "legal",
+      "completedAt": "2026-02-15T10:00:00Z",
+      "summaryReport": "Acme Privacy Corp demonstrates strong GDPR compliance posture with comprehensive data processing agreements and robust technical measures. Minor gaps noted in audit rights documentation.",
+      "principles": {
+        "transparency": { "status": "verified" },
+        "dataMinimization": { "status": "verified" },
+        "accountability": { "status": "verified" },
+        "security": { "status": "verified" },
+        "quality": { "status": "submitted" },
+        "participation": { "status": "verified" }
+      }
+    }
+  ],
+  "generated": "2026-03-06"
+}

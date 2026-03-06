@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://comply.org/schema/principles.json",
+  "title": "Comply.org Core Principles",
+  "description": "The six core data-protection principles against which vendors are assessed.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["key", "label", "description"],
+    "properties": {
+      "key": { "type": "string" },
+      "label": { "type": "string" },
+      "description": { "type": "string" }
+    }
+  },
+  "const": [
+    {
+      "key": "transparency",
+      "label": "Transparency",
+      "description": "Clear communication about data collection, use, and sharing practices."
+    },
+    {
+      "key": "dataMinimization",
+      "label": "Data Minimization",
+      "description": "Collecting only the data necessary for stated purposes."
+    },
+    {
+      "key": "accountability",
+      "label": "Accountability",
+      "description": "Demonstrable compliance through certifications, audits, and documented processes."
+    },
+    {
+      "key": "security",
+      "label": "Security",
+      "description": "Technical and organizational measures protecting data integrity and confidentiality."
+    },
+    {
+      "key": "quality",
+      "label": "Quality",
+      "description": "Ensuring data accuracy, completeness, and currency."
+    },
+    {
+      "key": "participation",
+      "label": "Participation",
+      "description": "Supporting data subject rights including access, rectification, and deletion."
+    }
+  ]
+}

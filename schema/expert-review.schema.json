@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://comply.org/schema/expert-review.schema.json",
+  "title": "Comply.org Expert Review",
+  "description": "An expert assessment of a vendor's compliance posture against the six core principles.",
+  "type": "object",
+  "required": ["expertRefCode", "issuingPlatform", "expertType", "completedAt", "principles"],
+  "properties": {
+    "expertRefCode": {
+      "type": "string",
+      "description": "Opaque identifier assigned by the issuing platform. Must be traceable back to the platform but must NOT contain the expert's personal information.",
+      "examples": ["EXP-2026-001", "VW-A1B2C3", "AUDIT-2026-0042"]
+    },
+    "issuingPlatform": {
+      "type": "string",
+      "description": "Identifier of the platform or organisation that assigned and verified the expert. Used for traceability.",
+      "examples": ["vendor.watch", "privacycloud.com", "bigfour-audit.example"]
+    },
+    "issuingPlatformUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL where the expert's identity can be verified by the issuing platform. The platform is responsible for expert KYC."
+    },
+    "expertType": {
+      "type": "string",
+      "enum": ["legal", "technical", "general"],
+      "description": "The expert's area of qualification."
+    },
+    "completedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of when the review was completed."
+    },
+    "summaryReport": {
+      "type": ["string", "null"],
+      "description": "Free-text summary of findings. Platforms may truncate for public display."
+    },
+    "principles": {
+      "type": "object",
+      "description": "Assessment of each core principle.",
+      "required": ["transparency", "dataMinimization", "accountability", "security", "quality", "participation"],
+      "properties": {
+        "transparency": { "$ref": "#/$defs/principleAssessment" },
+        "dataMinimization": { "$ref": "#/$defs/principleAssessment" },
+        "accountability": { "$ref": "#/$defs/principleAssessment" },
+        "security": { "$ref": "#/$defs/principleAssessment" },
+        "quality": { "$ref": "#/$defs/principleAssessment" },
+        "participation": { "$ref": "#/$defs/principleAssessment" }
+      }
+    }
+  },
+  "$defs": {
+    "principleAssessment": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["pending", "submitted", "verified"],
+          "description": "'pending' = not yet assessed, 'submitted' = evidence provided but not verified, 'verified' = independently confirmed by the expert."
+        },
+        "notes": {
+          "type": ["string", "null"],
+          "description": "Optional reviewer notes supporting the assessment."
+        }
+      }
+    }
+  }
+}
