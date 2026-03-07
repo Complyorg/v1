@@ -10,22 +10,22 @@ publicly attesting to a vendor's data-protection practices. Any platform,
 auditor, law firm, or privacy engineer can produce a Comply.org attestation —
 the only requirement is traceable expert identification.
 
-**Read the full specification: [SPECIFICATION.md](./SPECIFICATION.md)**
+**Read the full specification: [SPECIFICATION.md](https://github.com/complyorg/v1/blob/main/SPECIFICATION.md)**
 
 ## Quick Start
 
 1. Create a JSON document conforming to
-   [`schema/attestation.schema.json`](./schema/attestation.schema.json)
+   [`schema/attestation.schema.json`](https://github.com/complyorg/v1/blob/main/schema/attestation.schema.json)
 2. Optionally add expert reviews following
-   [`schema/expert-review.schema.json`](./schema/expert-review.schema.json)
+   [`schema/expert-review.schema.json`](https://github.com/complyorg/v1/blob/main/schema/expert-review.schema.json)
 3. Render to HTML/Markdown using the reference templates in
-   [`templates/`](./templates/) or your own tooling
+   [`templates/`](https://github.com/complyorg/v1/tree/main/templates) or your own tooling
 4. Publish as static pages
 
-See [`examples/`](./examples/) for complete attestation documents:
-- [`full-attestation.json`](./examples/full-attestation.json) — All fields
+See [`examples/`](https://github.com/complyorg/v1/tree/main/examples) for complete attestation documents:
+- [`full-attestation.json`](https://github.com/complyorg/v1/blob/main/examples/full-attestation.json) — All fields
   populated, expert-verified
-- [`minimal-attestation.json`](./examples/minimal-attestation.json) —
+- [`minimal-attestation.json`](https://github.com/complyorg/v1/blob/main/examples/minimal-attestation.json) —
   Minimum viable self-reported attestation
 
 ## Repository Structure
@@ -68,11 +68,11 @@ expert privacy while ensuring full accountability.
 
 ## License
 
-- **Code and tooling**: [MIT License](./LICENSE)
+- **Code and tooling**: [MIT License](https://github.com/complyorg/v1/blob/main/LICENSE)
 - **Specification and schemas**: [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
 
 ## Acknowledgments
 
 This standard originates from work by **PrivacyCloud SL**, which designed the
 core framework and published the original comply.org website in 2018. See
-[ACKNOWLEDGMENTS.md](./ACKNOWLEDGMENTS.md) for the full history.
+[ACKNOWLEDGMENTS.md](https://github.com/complyorg/v1/blob/main/ACKNOWLEDGMENTS.md) for the full history.

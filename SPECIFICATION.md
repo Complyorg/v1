@@ -3,12 +3,12 @@
 > This specification is licensed under
 > [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/).
 > Code and tooling in this repository are licensed under the
-> [MIT License](./LICENSE).
+> [MIT License](https://github.com/complyorg/v1/blob/main/LICENSE).
 
 > **History.** The Comply.org standard originates from work by PrivacyCloud SL,
 > which designed the core framework in 2018, coinciding with the EU General Data
 > Protection Regulation entering into force. See
-> [ACKNOWLEDGMENTS.md](./ACKNOWLEDGMENTS.md) for the full history.
+> [ACKNOWLEDGMENTS.md](https://github.com/complyorg/v1/blob/main/ACKNOWLEDGMENTS.md) for the full history.
 
 ---
 
@@ -39,7 +39,7 @@ identification.
 ## 3. Attestation Document
 
 An attestation is a JSON document conforming to
-[`schema/attestation.schema.json`](./schema/attestation.schema.json).
+[`schema/attestation.schema.json`](https://github.com/complyorg/v1/blob/main/schema/attestation.schema.json).
 
 ### 3.1 Required Fields
 
@@ -60,7 +60,7 @@ An attestation is a JSON document conforming to
 ### 3.2 Optional Fields
 
 All other fields defined in the schema are optional and may be `null` when
-unknown. See [`schema/attestation.schema.json`](./schema/attestation.schema.json)
+unknown. See [`schema/attestation.schema.json`](https://github.com/complyorg/v1/blob/main/schema/attestation.schema.json)
 for the complete field reference.
 
 ### 3.3 Transparency Score
@@ -73,7 +73,7 @@ standard may define their own scoring methodology, but must document it.
 
 Expert reviews are the mechanism through which attestations move from
 "Self-Reported" to "Expert-Verified" status. Each review conforms to
-[`schema/expert-review.schema.json`](./schema/expert-review.schema.json).
+[`schema/expert-review.schema.json`](https://github.com/complyorg/v1/blob/main/schema/expert-review.schema.json).
 
 ### 4.1 Expert Traceability
 
@@ -122,7 +122,7 @@ Each principle receives one of three statuses:
 ## 5. Rendering
 
 Attestations may be rendered in any format. This repository provides reference
-templates in [`templates/`](./templates/) for HTML and Markdown.
+templates in [`templates/`](https://github.com/complyorg/v1/tree/main/templates) for HTML and Markdown.
 
 ### 5.1 HTML Pages
 
@@ -179,4 +179,4 @@ of the standard it conforms to.
 ## 8. Contributing
 
 The standard is open to contributions from anyone. See
-[CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
+[CONTRIBUTING.md](https://github.com/complyorg/v1/blob/main/CONTRIBUTING.md) for guidelines.
