@@ -8,7 +8,7 @@
   "properties": {
     "$complyVersion": {
       "type": "string",
-      "const": "1.0",
+      "enum": ["1.0", "1.1"],
       "description": "Version of the Comply.org Attestation Standard."
     },
     "slug": {
@@ -136,6 +136,28 @@
       "description": "Role under the EU AI Act (e.g., 'Provider', 'Deployer')."
     },
     "iso42001Certified": { "type": ["boolean", "null"] },
+    "aiDisclosure": {
+      "type": ["object", "null"],
+      "description": "Structured AI model disclosure. Null when AI usage has not been assessed.",
+      "required": ["status", "transparencyLevel", "models"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["none", "disclosed", "undisclosed"],
+          "description": "'none' = no AI used, 'disclosed' = AI models provided, 'undisclosed' = AI used but models not provided."
+        },
+        "transparencyLevel": {
+          "type": "string",
+          "enum": ["transparent", "partial", "opaque", "n/a"],
+          "description": "AI transparency classification."
+        },
+        "models": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/aiModel" },
+          "description": "AI models used. Empty when status is 'none' or 'undisclosed'."
+        }
+      }
+    },
     "transparencyScore": {
       "type": "integer",
       "minimum": 0,
@@ -164,6 +186,17 @@
     }
   },
   "$defs": {
+    "aiModel": {
+      "type": "object",
+      "required": ["name", "type"],
+      "properties": {
+        "name": { "type": "string", "description": "Model name (e.g., 'GPT-4o', 'Claude Sonnet 4')." },
+        "type": { "type": "string", "description": "Model type (e.g., 'LLM', 'Image Generation', 'Classification')." },
+        "provider": { "type": ["string", "null"], "description": "Organization providing the model (e.g., 'OpenAI', 'Anthropic')." },
+        "euAiActRiskTier": { "type": ["string", "null"], "description": "EU AI Act risk classification." },
+        "isOpenSource": { "type": ["boolean", "null"], "description": "Whether model weights are openly available." }
+      }
+    },
     "lawAnalysis": {
       "type": "object",
       "required": ["score", "total", "clauses"],

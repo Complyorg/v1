@@ -1,5 +1,5 @@
 {
-  "$complyVersion": "1.0",
+  "$complyVersion": "1.1",
   "slug": "acme-privacy-corp",
   "name": "Acme Privacy Corp",
   "category": "Privacy & Consent",
@@ -46,6 +46,26 @@
   "aiTechniques": [],
   "euAiActRole": null,
   "iso42001Certified": false,
+  "aiDisclosure": {
+    "status": "disclosed",
+    "transparencyLevel": "transparent",
+    "models": [
+      {
+        "name": "GPT-4o",
+        "type": "LLM",
+        "provider": "OpenAI",
+        "euAiActRiskTier": "Limited Risk",
+        "isOpenSource": false
+      },
+      {
+        "name": "Custom BERT Classifier",
+        "type": "Classification",
+        "provider": null,
+        "euAiActRiskTier": "Minimal Risk",
+        "isOpenSource": true
+      }
+    ]
+  },
   "transparencyScore": 82,
   "dpaAnalysis": {
     "overallScore": 75,

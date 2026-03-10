@@ -1,5 +1,5 @@
 {
-  "$complyVersion": "1.0",
+  "$complyVersion": "1.1",
   "slug": "minicorp-analytics",
   "name": "MiniCorp Analytics",
   "category": "Analytics & BI",
@@ -33,6 +33,7 @@
   "aiTechniques": [],
   "euAiActRole": null,
   "iso42001Certified": false,
+  "aiDisclosure": null,
   "transparencyScore": 35,
   "dpaAnalysis": null,
   "expertReviews": [],

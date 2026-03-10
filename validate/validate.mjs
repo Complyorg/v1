@@ -80,9 +80,9 @@ for (const file of files) {
     continue;
   }
 
-  // 3. $complyVersion check (redundant with schema const, but explicit)
-  if (data.$complyVersion !== "1.0") {
-    annotate(relPath, `$complyVersion must be "1.0", got "${data.$complyVersion}"`);
+  // 3. $complyVersion check (redundant with schema enum, but explicit)
+  if (data.$complyVersion !== "1.0" && data.$complyVersion !== "1.1") {
+    annotate(relPath, `$complyVersion must be "1.0" or "1.1", got "${data.$complyVersion}"`);
   }
 
   // 4. Slug matches parent directory
@@ -131,6 +131,29 @@ for (const file of files) {
         new URL(val);
       } catch {
         annotate(relPath, `${field} is not a valid URL: "${val}"`);
+      }
+    }
+  }
+
+  // 8. AI Disclosure semantic validation
+  if (data.aiDisclosure != null) {
+    const ai = data.aiDisclosure;
+    if (ai.status === "none") {
+      if (ai.transparencyLevel !== "n/a") {
+        annotate(relPath, `aiDisclosure.status "none" requires transparencyLevel "n/a", got "${ai.transparencyLevel}"`);
+      }
+      if (Array.isArray(ai.models) && ai.models.length > 0) {
+        annotate(relPath, `aiDisclosure.status "none" requires empty models array`);
+      }
+    }
+    if (ai.status === "undisclosed") {
+      if (Array.isArray(ai.models) && ai.models.length > 0) {
+        annotate(relPath, `aiDisclosure.status "undisclosed" requires empty models array`);
+      }
+    }
+    if (ai.status === "disclosed") {
+      if (!Array.isArray(ai.models) || ai.models.length === 0) {
+        annotate(relPath, `aiDisclosure.status "disclosed" requires non-empty models array`);
       }
     }
   }

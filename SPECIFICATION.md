@@ -45,7 +45,7 @@ An attestation is a JSON document conforming to
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `$complyVersion` | `"1.0"` | Standard version |
+| `$complyVersion` | `"1.0"` or `"1.1"` | Standard version |
 | `slug` | string | URL-safe vendor identifier (`^[a-z0-9][a-z0-9-]*$`) |
 | `name` | string | Vendor legal or trading name |
 | `category` | string | Primary vendor category |
@@ -69,13 +69,57 @@ The transparency score reflects **how much information the vendor has
 disclosed**, not the quality of that information. Platforms implementing the
 standard may define their own scoring methodology, but must document it.
 
+### 3.4 AI Disclosure
+
+*Added in version 1.1.*
+
+The optional `aiDisclosure` field provides structured information about a
+vendor's use of artificial intelligence. It follows the same nullable-object
+pattern as `dpaAnalysis`: the field is `null` when AI usage has not been
+assessed, and an object with required inner fields when it has.
+
+#### 3.4.1 Status
+
+| Value | Meaning |
+|-------|---------|
+| `none` | The vendor does not use AI in its product or service. |
+| `disclosed` | The vendor uses AI and has provided a list of models. |
+| `undisclosed` | The vendor uses AI but has not provided model details. |
+
+#### 3.4.2 Transparency Level
+
+| Value | Meaning |
+|-------|---------|
+| `transparent` | Vendor-declared or documented AI models with full details. |
+| `partial` | Some model information available (e.g., inferred from documentation). |
+| `opaque` | AI usage detected but no model information provided. |
+| `n/a` | No AI usage detected. |
+
+#### 3.4.3 Model Fields
+
+When `status` is `"disclosed"`, each entry in the `models` array contains:
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `name` | string | Yes | Model name (e.g., "GPT-4o", "Claude Sonnet 4") |
+| `type` | string | Yes | Model type (e.g., "LLM", "Image Generation", "Classification") |
+| `provider` | string \| null | No | Organization providing the model (e.g., "OpenAI", "Anthropic") |
+| `euAiActRiskTier` | string \| null | No | EU AI Act risk classification |
+| `isOpenSource` | boolean \| null | No | Whether model weights are openly available |
+
+#### 3.4.4 Semantic Constraints
+
+- `status: "none"` requires `transparencyLevel: "n/a"` and `models: []`
+- `status: "undisclosed"` requires `models: []`
+- `status: "disclosed"` requires `models` to be non-empty
+
 ## 4. Expert Reviews
 
 Expert reviews are the mechanism through which attestations move from
 "Self-Reported" to "Expert-Verified" status. Each review conforms to
 [`schema/expert-review.schema.json`](https://github.com/complyorg/v1/blob/main/schema/expert-review.schema.json).
 
-### 4.1 Expert Traceability
+### 4.1 Expert Traceability (unchanged from v1.0)
 
 Every expert review **must** include:
 
@@ -167,7 +211,12 @@ platforms to consume and re-render the data.
 
 ## 7. Versioning
 
-This is version **1.0** of the Comply.org Attestation Standard.
+The current version is **1.1** of the Comply.org Attestation Standard.
+
+| Version | Changes |
+|---------|---------|
+| 1.0 | Initial release |
+| 1.1 | Added `aiDisclosure` field and `aiModel` definition |
 
 Future versions will follow semantic versioning (`MAJOR.MINOR`). Breaking
 changes to required fields increment the major version. Additive changes
